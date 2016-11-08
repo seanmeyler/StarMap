@@ -6,6 +6,12 @@ int hline_x1 = 50;
 int hline_y1 = 750;
 int hline_x2 = 750;
 int hline_y2 = 750;
+int[] gridnum = {-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5};
+int[] gridnum2 = {5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5};
+int xpos1 = 50;
+int ypos1 = 30;
+int xpos2 = 10;
+int ypos2 = 750;
 
 void setup()
 {
@@ -59,4 +65,24 @@ void drawGraph()
      hline_y1 -= 70;
      hline_y2 -= 70;
    }
+   
+   //Horizontal Numbers
+   for(int i = 0; i < 11; i++)
+   {
+     fill(255, 0 , 255);
+     textSize(20);
+     text(gridnum[i], xpos1,  ypos1);
+     xpos1 += 70;
+   }
+   
+   //Vertical Numbers
+     for(int i = 0; i < 11; i++)
+   {
+     fill(255, 0 , 255);
+     textSize(20);
+     text(gridnum[i], xpos2,  ypos2);
+     ypos2 -= 70;
+   }
+   
+   
 }
