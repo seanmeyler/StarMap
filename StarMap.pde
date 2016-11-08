@@ -18,12 +18,7 @@ void setup()
    size(800, 800);
    background(0);
    loadData();
-}
-
-void draw()
-{
-    drawGraph();
-    printStars();
+   printStars();
 }
 
 ArrayList<Star> data = new ArrayList<Star>();
@@ -83,6 +78,24 @@ void drawGraph()
      text(gridnum[i], xpos2,  ypos2);
      ypos2 -= 70;
    }
-   
-   
+}
+
+void plot()
+{
+  //Stars are showing in left corner could not figure out how to plot them correctly
+   Table t = loadTable("data.csv");
+   for(int i = 0; i < t.getRowCount(); i++)
+   {
+       fill(255, 0, 0);
+       ellipse(data.get(i).Xg, data.get(i).Yg, data.get(i).StarSize, data.get(i).StarSize);
+       stroke(255, 243, 8);
+       strokeWeight(1);
+       line(data.get(i).Xg, data.get(i).Xg - 50, data.get(i).Yg, data.get(i).Yg + 50);
+   }
+}
+
+void draw()
+{
+    drawGraph();
+    plot();
 }
