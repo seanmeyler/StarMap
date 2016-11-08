@@ -10,6 +10,7 @@ int hline_y2 = 750;
 void setup()
 {
    size(800, 800);
+   background(0);
    loadData();
 }
 
@@ -23,15 +24,13 @@ ArrayList<Star> data = new ArrayList<Star>();
 
 void loadData()
 {
-   data.clear();
-   String[] lines = loadStrings("data.csv");
-   
-   for(String line: lines)
-   {
-      Star star = new Star(line);
-      data.add(star);   
-   }
-   data.clear();
+    Table t = loadTable("data.csv");
+    for(int i = 0 ; i < t.getRowCount(); i ++)
+    {
+      TableRow row = t.getRow(i);
+      Star star = new Star(row);
+      data.add(star);
+    }
 }
 
 void printStars()
@@ -59,4 +58,5 @@ void drawGraph()
      line(hline_x1, hline_y1, hline_x2, hline_y2);
      hline_y1 -= 70;
      hline_y2 -= 70;
+   }
 }
